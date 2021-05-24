@@ -20,24 +20,28 @@
 
 `timescale 1ns / 100ps
 
+//Defining the module
+
 module doorbell(
-	input A,
-	input B,
+	input a,
+	input b,
 	input sel,
-	output out,
-    );
-    
+	output out);
+ 
+//Registers and wires
+  
 	reg r;
 	wire out;
-		
-		always @(sel or A or B);
-		begin
-			if(sel==1)
-				r=B;
-			else
-				r=A;
-		end
+	
+//Logic
+			always @(sel or a or b);
+			begin
+				if (sel == 1)
+					r <= b;
+				else
+					r <= a;
+			end
 
-	assign #5 out=r;    
+		assign #5 out=r;    
       
 endmodule
