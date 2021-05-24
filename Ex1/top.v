@@ -31,8 +31,8 @@ module blinds(
     );
     
     wire   out;
-	assign AB={a,b};
-	assign out = func[AB];
+	assign out=func[{a,b}];
+	
 
        
 
