@@ -30,18 +30,10 @@ module doorbell(
  
 //Registers and wires
   
-	reg r;
 	wire out;
 	
 //Logic
-			always @(sel or a or b);
-			begin
-				if (sel == 1)
-					r <= b;
-				else
-					r <= a;
-			end
-
-		assign #5 out=r;    
+			
+	assign #5 out = sel?b:a;
       
 endmodule
