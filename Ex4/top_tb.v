@@ -29,25 +29,23 @@ wire [2:0]colour;
 
 
 initial begin
-rst=1;
+rst=0;
 button=0;
 err=0;
 forever begin
-	//Testing reset
-	#(CLK_PERIOD) if (colour!=0)
-		begin
-		err=1;
-		end
 	
 	//Testing case of 0 or 7
-	rst=0;
 	#(CLK_PERIOD) if (colour==7 | colour==0)
 		begin 
+		$display("FAILED 0or7buttonoff");
+		$finish;
 		err=1;
 		end
 	button=1; 
 	#(CLK_PERIOD) if (colour==7 | colour==0)
 		begin 
+		$display("FAILED 0or7buttonon");
+		$finish;
 		err=1;
 		end
 	end
@@ -57,14 +55,14 @@ end
 
 //Success check
 initial begin
-#(300*CLK_PERIOD)
+#(3*CLK_PERIOD)
 	if (err==0) begin
-       		$display("PASS");
+       		$display("PASSED");
        		$finish;
 	end
 	else
  		begin
-		$display("FAIL");
+		$display("FAILED");
 		$finish;
 	end
 end
