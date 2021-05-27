@@ -18,8 +18,8 @@
 `timescale 1ns / 100ps
 
 module lighting(
-	input rst,
 	input clk,
+	input rst,
 	input button,
 	output reg [2:0]colour);
 
