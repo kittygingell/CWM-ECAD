@@ -17,6 +17,7 @@ reg clk;
 reg rst;
 reg button;
 reg err;
+reg [2:0]t;
 wire [2:0]colour;
 
 //CLOCK
@@ -48,6 +49,16 @@ forever begin
 		$finish;
 		err=1;
 		end
+	//Testing change
+	button=1;
+	t=colour;
+	#(2*CLK_PERIOD) if (colour==t)
+		begin 
+		$display("FAILED change");
+		$finish;
+		err=1;
+		end
+
 	end
 end
 
