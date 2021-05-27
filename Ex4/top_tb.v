@@ -33,17 +33,16 @@ initial begin
 rst=0;
 button=0;
 err=0;
-forever begin
 	
 	//Testing case of 0 or 7
-	#(CLK_PERIOD) if (colour==7 | colour==0)
+	#(CLK_PERIOD) if (colour==7 || colour==0)
 		begin 
 		$display("FAILED 0or7buttonoff");
 		$finish;
 		err=1;
 		end
 	button=1; 
-	#(CLK_PERIOD) if (colour==7 | colour==0)
+	#(CLK_PERIOD) if (colour==7 || colour==0)
 		begin 
 		$display("FAILED 0or7buttonon");
 		$finish;
@@ -59,7 +58,6 @@ forever begin
 		err=1;
 		end
 
-	end
 end
 
 
